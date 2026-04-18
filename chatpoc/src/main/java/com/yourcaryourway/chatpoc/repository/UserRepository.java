@@ -10,6 +10,7 @@ import com.yourcaryourway.chatpoc.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findByEmailOrPseudo(String email, String pseudo);
+	Optional<User> findByEmail(String email);
 	Boolean existsByPseudo(String pseudo);
 	Boolean existsByEmail(String email);
 }

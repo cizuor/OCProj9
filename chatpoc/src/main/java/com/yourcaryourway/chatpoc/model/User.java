@@ -1,11 +1,16 @@
 package com.yourcaryourway.chatpoc.model;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.yourcaryourway.chatpoc.model.enums.Currency;
 import com.yourcaryourway.chatpoc.model.enums.Language;
@@ -38,7 +43,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class User {
+public class User implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,5 +80,36 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(length = 3, nullable = false)
 	private Currency currency = Currency.EUR;
+	
+	
+	 @Override
+    public boolean isAccountNonExpired() {
+        return true; 
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true; 
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+	}
+
+	@Override
+	public String getUsername() {
+		return email;
+	}
 	
 }

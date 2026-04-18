@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.yourcaryourway.chatpoc.dto.ReservationDTO;
 import com.yourcaryourway.chatpoc.dto.UserDTO;
+import com.yourcaryourway.chatpoc.model.User;
 import com.yourcaryourway.chatpoc.repository.ReservationRepository;
 import com.yourcaryourway.chatpoc.repository.UserRepository;
 
@@ -36,5 +37,9 @@ public class UserService {
 	                .stream()
 	                .map(ReservationDTO::fromEntity)
 	                .collect(Collectors.toList());
+	    }
+	 
+	 public User save(User user) {
+	        return userRepository.save(user);
 	    }
 }
