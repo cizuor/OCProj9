@@ -12,5 +12,4 @@ import com.yourcaryourway.chatpoc.model.Conversation;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long>{
 	 List<Reservation> findAllByClientId(Long userId);
-	 Optional<Conversation> findByReservationId(Long reservationId);
 }

@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres-chatpoc:
+    image: postgres:15-alpine # Version légère de PostgreSQL
+    container_name: postgres_db_chatpoc
+    environment:
+      POSTGRES_DB: chatpoc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123 # Mot de passe simple pour le dev local
+    ports:
+      - "5432:5432" # Expose le port pour que Spring Boot puisse s'y connecter
+    volumes:
+      - postgres-data:/var/lib/postgresql/data # Permet de garder les données même si on coupe Docker
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
