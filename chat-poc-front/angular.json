@@ -7,6 +7,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "chat-poc-front": {
+      "i18n": {
+        "sourceLocale": "fr",
+        "locales": {
+          "en": "src/locale/messages.en.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -18,6 +24,10 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "polyfills": [
+              "zone.js",
+              "@angular/localize/init"
+            ],
             "assets": [
               {
                 "glob": "**/*",
@@ -48,6 +58,9 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "en": {
+              "localize": ["en"]
             }
           },
           "defaultConfiguration": "production"
@@ -60,6 +73,9 @@
             },
             "development": {
               "buildTarget": "chat-poc-front:build:development"
+            },
+            "en": {
+              "buildTarget": "chat-poc-front:build:development,en"
             }
           },
           "defaultConfiguration": "development"

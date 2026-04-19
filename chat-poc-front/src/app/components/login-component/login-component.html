@@ -1,0 +1,32 @@
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+  <div class="card shadow-lg" style="max-width: 400px; width: 100%; border-radius: 15px;">
+    <div class="card-body p-5 text-center">
+      
+      <h2 class="fw-bold mb-2 text-uppercase" i18n="@@login.welcome">Bienvenue</h2>
+      <p class="text-muted mb-5" i18n="@@login.subtitle">Connectez-vous pour accéder au support Your Car Your Way</p>
+
+      <div class="form-outline mb-4 text-start">
+        <label class="form-label" i18n="@@login.idLabel">Email ou Pseudo</label>
+        <input type="text" [(ngModel)]="loginData.identifiant" class="form-control form-control-lg" />
+      </div>
+
+      <div class="form-outline mb-4 text-start">
+        <label class="form-label" i18n="@@login.passwordLabel">Mot de passe</label>
+        <input type="password" [(ngModel)]="loginData.password" class="form-control form-control-lg" />
+      </div>
+
+      <button (click)="onLogin()" class="btn btn-primary btn-lg w-100 shadow" type="submit" i18n="@@login.submit">
+        Se connecter
+      </button>
+
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3 small py-2">
+        {{ errorMessage }}
+      </div>
+
+      <p class="small mt-3">
+        <a routerLink="/register" i18n="@@login.goToRegister">Pas encore de compte ? Inscrivez-vous</a>
+      </p>
+
+    </div>
+  </div>
+</div>

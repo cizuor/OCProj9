@@ -1,0 +1,36 @@
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+  <div class="card shadow-lg" style="max-width: 450px; width: 100%; border-radius: 15px;">
+    <div class="card-body p-5 text-center">
+      
+      <h2 class="fw-bold mb-2 text-uppercase" i18n="@@register.title">Créer un compte</h2>
+      <p class="text-muted mb-4" i18n="@@register.subtitle">Rejoignez Your Car Your Way</p>
+
+      <div class="form-outline mb-3 text-start">
+        <label class="form-label" i18n="@@register.emailLabel">Email</label>
+        <input type="email" [(ngModel)]="registerData.email" class="form-control" />
+      </div>
+
+      <div class="form-outline mb-3 text-start">
+        <label class="form-label" i18n="@@register.pseudoLabel">Pseudo</label>
+        <input type="text" [(ngModel)]="registerData.pseudo" class="form-control" />
+      </div>
+
+      <div class="form-outline mb-4 text-start">
+        <label class="form-label" i18n="@@register.passwordLabel">Mot de passe</label>
+        <input type="password" [(ngModel)]="registerData.password" class="form-control" />
+      </div>
+
+      <button (click)="onRegister()" class="btn btn-success btn-lg w-100 shadow mb-3" i18n="@@register.submit">
+        S'inscrire
+      </button>
+
+      <div *ngIf="errorMessage" class="alert alert-danger py-2 small">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success py-2 small">{{ successMessage }}</div>
+
+      <p class="small mt-3">
+        <a routerLink="/login" i18n="@@register.backToLogin">Déjà un compte ? Connectez-vous</a>
+      </p>
+
+    </div>
+  </div>
+</div>

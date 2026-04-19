@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="fr" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="chat.myloc" datatype="html">
+        <source>Mes Locations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/chat-component/chat-component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chat.title" datatype="html">
+        <source>Support Client - Location #8475</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/chat-component/chat-component.html</context>
+          <context context-type="linenumber">31,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chat.placeholder" datatype="html">
+        <source>Tapez votre message...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/chat-component/chat-component.html</context>
+          <context context-type="linenumber">56,57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chat.sendButton" datatype="html">
+        <source>Envoyer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/chat-component/chat-component.html</context>
+          <context context-type="linenumber">57,59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login.welcome" datatype="html">
+        <source>Bienvenue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/login-component/login-component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login.subtitle" datatype="html">
+        <source>Connectez-vous pour accéder au support Your Car Your Way</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/login-component/login-component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login.idLabel" datatype="html">
+        <source>Email ou Pseudo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/login-component/login-component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login.passwordLabel" datatype="html">
+        <source>Mot de passe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/login-component/login-component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login.submit" datatype="html">
+        <source> Se connecter </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/login-component/login-component.html</context>
+          <context context-type="linenumber">19,22</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

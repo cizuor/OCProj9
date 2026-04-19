@@ -1,0 +1,63 @@
+
+<div class="container-fluid vh-100 bg-light">
+  <div class="row h-100">
+    
+    <!-- BARRE LATERALE (Liste des réservations) -->
+    <div class="col-md-4 col-lg-3 bg-white border-end p-0">
+      <div class="p-3 border-bottom bg-primary text-white">
+        <h5 i18n="@@chat.myloc" class="mb-0">Mes Locations</h5>
+      </div>
+      <div class="list-group list-group-flush">
+        <!-- Une réservation -->
+        <a href="#" class="list-group-item list-group-item-action p-3 active">
+          <div class="d-flex justify-content-between">
+            <h6 class="mb-1">Renault Clio - #8475</h6>
+            <small>18/04</small>
+          </div>
+          <p class="mb-1 small">Dernier message : Bonjour...</p>
+        </a>
+        <!-- Autre réservation -->
+        <a href="#" class="list-group-item list-group-item-action p-3">
+          <h6 class="mb-1">Peugeot 208 - #1029</h6>
+          <small class="text-muted">Hier</small>
+        </a>
+      </div>
+    </div>
+
+    <!-- ZONE DE TCHAT -->
+    <div class="col-md-8 col-lg-9 d-flex flex-column p-0">
+      <!-- Header -->
+      <div class="p-3 bg-white border-bottom shadow-sm">
+        <h6 i18n="@@chat.title" class="mb-0">Support Client - Location #8475</h6>
+      </div>
+
+      <!-- Messages -->
+      <div class="flex-grow-1 p-4 overflow-auto" style="background-color: #f8f9fa;">
+        <!-- Message Reçu -->
+        <div class="d-flex mb-3">
+          <div class="bg-white p-3 rounded shadow-sm border" style="max-width: 70%;">
+            <p class="mb-0">Bonjour ! Comment puis-je vous aider pour votre Clio ?</p>
+            <small class="text-muted">09:41</small>
+          </div>
+        </div>
+
+        <!-- Message Envoyé -->
+        <div class="d-flex justify-content-end mb-3">
+          <div class="bg-primary text-white p-3 rounded shadow" style="max-width: 70%;">
+            <p class="mb-0">La voiture fait un bruit bizarre au freinage.</p>
+            <small class="text-white-50">09:45</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input de message -->
+      <div class="p-3 bg-white border-top">
+        <div class="input-group">
+          <input i18n-placeholder="@@chat.placeholder"type="text" class="form-control" placeholder="Tapez votre message...">
+          <button i18n="@@chat.sendButton" class="btn btn-primary px-4">Envoyer</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
