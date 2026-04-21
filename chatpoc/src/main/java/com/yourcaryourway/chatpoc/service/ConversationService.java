@@ -88,7 +88,22 @@ public class ConversationService {
 		            .collect(Collectors.toList());
 	 }
 	
+	 public List<ConversationDTO> findByUserEmail(String email){
+		 List<Conversation> conversations = conversationRepository.findByReservationClientEmail(email);
+		 
+		 return conversations.stream()
+		            .map(ConversationDTO::fromEntity) 
+		            .collect(Collectors.toList());
+	 }
 	
-	
+	 
+	@Transactional 
+	public ConversationDTO getOrCreateConversation(Long reservationId) {
+	    return conversationRepository.findByReservationId(reservationId)
+	            .map(ConversationDTO::fromEntity)
+	            .orElseGet(() -> {
+	                return createAndSaveNewConversation(reservationId);
+	            });
+	}
 
 }

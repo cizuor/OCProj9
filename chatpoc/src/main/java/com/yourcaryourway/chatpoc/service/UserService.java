@@ -31,6 +31,10 @@ public class UserService {
 	 public UserDTO findById(Long userId) {
 		 return UserDTO.fromEntity(userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("Utilisateur non trouvé")));
 	 }
+	 
+	 public UserDTO FindByEmailOrPseudo (String identifiant) {
+		 return UserDTO.fromEntity(userRepository.findByEmailOrPseudo(identifiant,identifiant).orElseThrow(() -> new EntityNotFoundException("Utilisateur non trouvé")));
+	 }
 	    
 	 public List<ReservationDTO> getUserReservations(Long userId) {
 	        return reservationRepository.findAllByClientId(userId)

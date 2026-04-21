@@ -2,10 +2,16 @@ package com.yourcaryourway.chatpoc.service;
 
 import java.math.BigDecimal;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
 import com.yourcaryourway.chatpoc.dto.ReservationDTO;
+import com.yourcaryourway.chatpoc.dto.UserDTO;
+import com.yourcaryourway.chatpoc.dto.VoitureDTO;
 import com.yourcaryourway.chatpoc.model.Reservation;
 import com.yourcaryourway.chatpoc.model.User;
 import com.yourcaryourway.chatpoc.model.Voiture;
@@ -22,6 +28,7 @@ public class ReservationService {
 	private final UserRepository userRepository;
 	private final VoitureRepository voitureRepository;
 	private final ReservationRepository reservationRepository;
+	private final Random random = new Random();
 	
 	
 	
@@ -59,4 +66,34 @@ public class ReservationService {
 	    resa.setClient(user);
 	    return ReservationDTO.fromEntity(saveReservation(resa));
 	}
+	
+	
+	
+	@Transactional
+    public void seedRandomReservationsForUser(User user) {
+        List<Voiture> voitures = voitureRepository.findAll();
+        if (voitures.isEmpty()) return;
+
+        Collections.shuffle(voitures);
+        List<Voiture> selection = voitures.stream().limit(2).toList();
+
+        for (Voiture v : selection) {
+            LocalDateTime debut = LocalDateTime.now().plusDays(1 + random.nextInt(30));
+            LocalDateTime fin = debut.plusDays(1 + random.nextInt(7));
+
+            ReservationDTO fakeRequest = new ReservationDTO();
+            fakeRequest.setDateDebut(debut);
+            fakeRequest.setDateFin(fin);
+            
+            VoitureDTO vDto = new VoitureDTO();
+            vDto.setId(v.getId());
+            fakeRequest.setVoiture(vDto);
+
+            UserDTO uDto = new UserDTO();
+            uDto.setId(user.getId());
+            fakeRequest.setClient(uDto);
+
+            this.createReservation(fakeRequest);
+        }
+    }
 }

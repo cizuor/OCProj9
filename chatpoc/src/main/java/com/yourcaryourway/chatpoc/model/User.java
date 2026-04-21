@@ -36,10 +36,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(
-	    name = "users",
-	    uniqueConstraints = @UniqueConstraint(columnNames = "email")
-	)
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -48,59 +45,57 @@ public class User implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@CreationTimestamp
-    @Column(updatable = false,nullable = false)
-    private LocalDateTime createdAt;
-	
+	@Column(updatable = false, nullable = false)
+	private LocalDateTime createdAt;
+
 	@UpdateTimestamp
-    private LocalDateTime updatedAt;
-	
-	
+	private LocalDateTime updatedAt;
+
 	@NotBlank
-    @Email
-    @Size(max = 50)
-    @Column(nullable = false, length = 50)
-    private String email;
-	
+	@Email
+	@Size(max = 50)
+	@Column(nullable = false, length = 50)
+	private String email;
+
 	@NotBlank
-    @Size(max = 30)
-    @Column(nullable = false, length = 30)
-    private String pseudo;
-	
+	@Size(max = 30)
+	@Column(nullable = false, length = 30)
+	private String pseudo;
+
 	@NotBlank
-    @Size(max = 120)
-    @Column(nullable = false, length = 120)
-    private String password;
-	
+	@Size(max = 120)
+	@Column(nullable = false, length = 120)
+	private String password;
+
 	@Enumerated(EnumType.STRING)
 	@Column(length = 2, nullable = false)
-	private Language  language = Language.FR;
-	
+	private Language language = Language.FR;
+
 	@Enumerated(EnumType.STRING)
 	@Column(length = 3, nullable = false)
 	private Currency currency = Currency.EUR;
-	
-	
-	 @Override
-    public boolean isAccountNonExpired() {
-        return true; 
-    }
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true; 
-    }
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
 
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -111,5 +106,5 @@ public class User implements UserDetails {
 	public String getUsername() {
 		return email;
 	}
-	
+
 }

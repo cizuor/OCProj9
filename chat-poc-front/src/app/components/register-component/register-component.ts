@@ -30,7 +30,7 @@ export class RegisterComponent {
       next: (res) => {
         this.successMessage = "Compte créé avec succès ! Redirection...";
         // On attend 2 secondes pour que l'utilisateur voie le message, puis redirection
-        setTimeout(() => this.router.navigate(['/login']), 2000);
+        setTimeout(() => this.router.navigate(['/chat']), 2000);
       },
       error: (err) => {
         this.errorMessage = err.error || "Erreur lors de la création du compte.";

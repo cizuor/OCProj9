@@ -12,10 +12,12 @@ import com.yourcaryourway.chatpoc.model.Conversation;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class ConversationDTO {
 
 	private Long id;
