@@ -15,4 +15,8 @@ export class ConversationService {
   getMyConversations(): Observable<Conversation[]> {
     return this.http.get<Conversation[]>(`${this.apiUrl}/me`);
   }
+
+  getConversationByReservation(reservationId: number): Observable<Conversation> {
+    return this.http.get<Conversation>(`${this.apiUrl}/conversation/reservation/${reservationId}`);
+  }
 }

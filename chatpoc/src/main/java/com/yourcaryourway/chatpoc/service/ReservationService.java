@@ -34,8 +34,6 @@ public class ReservationService {
 	
 	
 	
-	
-	
 	public ReservationService(UserRepository userRepository, VoitureRepository voitureRepository,
 			ReservationRepository reservationRepository) {
 		super();

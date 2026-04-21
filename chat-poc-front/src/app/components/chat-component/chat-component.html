@@ -8,7 +8,7 @@
         <h5 i18n="@@chat.myloc" class="mb-0">Mes Locations</h5>
       </div>
       <div class="list-group list-group-flush">
-        <!-- Une réservation -->
+        <!-- Une réservation 
         <a href="#" class="list-group-item list-group-item-action p-3 active">
           <div class="d-flex justify-content-between">
             <h6 class="mb-1">Renault Clio - #8475</h6>
@@ -16,39 +16,57 @@
           </div>
           <p class="mb-1 small">Dernier message : Bonjour...</p>
         </a>
-        <!-- Autre réservation -->
         <a href="#" class="list-group-item list-group-item-action p-3">
           <h6 class="mb-1">Peugeot 208 - #1029</h6>
           <small class="text-muted">Hier</small>
-        </a>
+        </a>-->
+          @for (res of reservations ; track res.id) {
+            <a (click)="selectReservation(res)"
+              [class.active]="selectedReservation?.id === res.id"
+              style="cursor: pointer;"
+              class="list-group-item list-group-item-action p-3">
+              <div class="d-flex justify-content-between">
+                <h6 class="mb-1">{{ res.voiture?.nom || 'Véhicule' }}</h6>
+              </div>
+              <p class="mb-1 small text-muted">Du {{ res.dateDebut | date:'dd/MM/yyyy' }} au {{ res.dateFin | date:'dd/MM/yyyy' }}</p>
+            </a>
+          } @empty {
+            <div class="p-4 text-center text-muted">
+              <small i18n="@@chat.noloc">Aucune location en cours.</small>
+            </div>
+          }
       </div>
     </div>
 
     <!-- ZONE DE TCHAT -->
     <div class="col-md-8 col-lg-9 d-flex flex-column p-0">
+       @if (selectedReservation) {
       <!-- Header -->
       <div class="p-3 bg-white border-bottom shadow-sm">
-        <h6 i18n="@@chat.title" class="mb-0">Support Client - Location #8475</h6>
+        <h6 i18n="@@chat.title" class="mb-0">Support Client - Location {{ selectedReservation.voiture?.nom }}</h6>
       </div>
 
       <!-- Messages -->
       <div class="flex-grow-1 p-4 overflow-auto" style="background-color: #f8f9fa;">
-        <!-- Message Reçu -->
+        @for (msg of messages; track msg.id) {
         <div class="d-flex mb-3">
           <div class="bg-white p-3 rounded shadow-sm border" style="max-width: 70%;">
-            <p class="mb-0">Bonjour ! Comment puis-je vous aider pour votre Clio ?</p>
-            <small class="text-muted">09:41</small>
+            <span class="fw-bold text-primary" style="font-size: 0.8rem;">{{ msg.pseudoAuteur }}</span>
+            <p class="mb-0"> >{{ msg.contenu }}</p>
+            <small class="text-muted"> {{msg.createdAt}}</small>
           </div>
         </div>
+      }
+      </div>
 
-        <!-- Message Envoyé -->
+        <!-- Message Envoyé 
         <div class="d-flex justify-content-end mb-3">
           <div class="bg-primary text-white p-3 rounded shadow" style="max-width: 70%;">
             <p class="mb-0">La voiture fait un bruit bizarre au freinage.</p>
             <small class="text-white-50">09:45</small>
           </div>
         </div>
-      </div>
+      </div>-->
 
       <!-- Input de message -->
       <div class="p-3 bg-white border-top">
@@ -57,6 +75,11 @@
           <button i18n="@@chat.sendButton" class="btn btn-primary px-4">Envoyer</button>
         </div>
       </div>
+      } @else {
+        <div class="h-100 d-flex align-items-center justify-content-center text-muted">
+          <p class="lead text-muted mt-3" i18n="@@chat.noselection">Sélectionnez une location pour discuter avec le support.</p>
+        </div>
+      }
     </div>
 
   </div>
