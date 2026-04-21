@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -65,6 +66,15 @@ public class ReservationService {
 	    resa.setVoiture(voiture);
 	    resa.setClient(user);
 	    return ReservationDTO.fromEntity(saveReservation(resa));
+	}
+	
+	
+	public List<ReservationDTO> findByUserEmail(String email){
+		List<Reservation> reservations = reservationRepository.findByClientEmail(email);
+		
+		return reservations.stream()
+				.map(ReservationDTO::fromEntity)
+				.collect(Collectors.toList());
 	}
 	
 	
