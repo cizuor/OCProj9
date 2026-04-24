@@ -35,15 +35,15 @@ export class Authservice {
   }
 
   logout() {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('token');
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('authToken');
+    return !!localStorage.getItem('token');
   }
 
   getToken() {
-    return localStorage.getItem('authToken');
+    return localStorage.getItem('token');
   }
 
   register(userData: RegisterRequest) {

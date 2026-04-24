@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ConversationService {
-   private apiUrl = 'http://localhost:8080/api/reservations';
+   private apiUrl = 'http://localhost:8080/api/conversation';
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +17,6 @@ export class ConversationService {
   }
 
   getConversationByReservation(reservationId: number): Observable<Conversation> {
-    return this.http.get<Conversation>(`${this.apiUrl}/conversation/reservation/${reservationId}`);
+    return this.http.get<Conversation>(`${this.apiUrl}/reservation/${reservationId}`);
   }
 }

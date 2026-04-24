@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Client } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
 import { BehaviorSubject } from 'rxjs';
 import { Message } from '../interfaces/message';
 
@@ -16,9 +15,9 @@ export class ChatService {
   constructor() {}
 
   connect(conversationId: number) {
-    const socket = new SockJS('http://localhost:8080/ws-chat');
+
     this.stompClient = new Client({
-      webSocketFactory: () => socket,
+      brokerURL: 'ws://localhost:8080/ws-chat',
       debug: (str) => console.log(str),
       reconnectDelay: 5000,
       connectHeaders: {
@@ -28,9 +27,14 @@ export class ChatService {
 
     this.stompClient.onConnect = (frame) => {
       console.log('Connecté au WebSocket  pour la conversation : ' +conversationId);
-      this.stompClient?.subscribe(`/topic/chat/${conversationId}`, (message) => {
-        this.messageSource.next(JSON.parse(message.body));
+      this.stompClient?.subscribe(`/topic/chat/${conversationId}`, (sdkEvent) => {
+        const newMessage: Message = JSON.parse(sdkEvent.body);
+        this.messageSource.next(newMessage);
       });
+    };
+
+    this.stompClient.onStompError = (frame) => {
+      console.error('Erreur STOMP : ' + frame.headers['message']);
     };
 
     this.stompClient.activate();

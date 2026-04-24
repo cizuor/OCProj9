@@ -92,7 +92,6 @@ public class AuthService {
 
         User user = userRepository.findByEmailOrPseudo(request.getIdentifiant(), request.getIdentifiant())
                 .orElseThrow();
-        reservationService.seedRandomReservationsForUser(user);
         String jwtToken = jwtService.generateToken(user);
         return new AuthResponse(jwtToken);
     }

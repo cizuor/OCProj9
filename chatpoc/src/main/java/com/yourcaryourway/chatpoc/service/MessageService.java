@@ -36,6 +36,17 @@ public class MessageService {
 	
 
 	
+    public MessageDTO saveMessage(Long conversationId, String userEmail, String contenu) {
+        User auteur = userRepository.findByEmailOrPseudo(userEmail,userEmail)
+                .orElseThrow(() -> new EntityNotFoundException("Utilisateur non trouvé"));
+
+        
+        Conversation conv = conversationRepository.findById(conversationId)
+                .orElseThrow(() -> new EntityNotFoundException("Conversation non trouvée"));
+
+        return saveMessage(conv,auteur,contenu);
+    }
+	
 	@Transactional
     public MessageDTO saveMessage(Long conversationId, Long userId, String contenu) {
         User auteur = userRepository.findById(userId)
@@ -44,6 +55,14 @@ public class MessageService {
         Conversation conv = conversationRepository.findById(conversationId)
                 .orElseThrow(() -> new EntityNotFoundException("Conversation non trouvée"));
 
+
+        return saveMessage(conv,auteur,contenu);
+    }
+	
+	
+	
+	@Transactional
+    public MessageDTO saveMessage(Conversation conv, User auteur, String contenu) {
         Message message = new Message();
         message.setContenu(contenu);
         message.setAuteur(auteur);
@@ -51,6 +70,9 @@ public class MessageService {
 
         return MessageDTO.fromEntity(messageRepository.save(message));
     }
+	
+	
+	
 	
 	
 	 public List<MessageDTO> findByConversationId(Long conversationId) {

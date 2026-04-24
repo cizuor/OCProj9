@@ -89,7 +89,12 @@ public class ConversationService {
 	 }
 	
 	 public List<ConversationDTO> findByUserEmail(String email){
-		 List<Conversation> conversations = conversationRepository.findByReservationClientEmail(email);
+		 List<Conversation> conversations ;
+		 if(email.endsWith("chatpoc.com")) {
+			 conversations = conversationRepository.findAll();
+		 }else {
+			 conversations = conversationRepository.findByReservationClientEmail(email);
+		 }
 		 
 		 return conversations.stream()
 		            .map(ConversationDTO::fromEntity) 

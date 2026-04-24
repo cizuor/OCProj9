@@ -68,7 +68,14 @@ public class ReservationService {
 	
 	
 	public List<ReservationDTO> findByUserEmail(String email){
-		List<Reservation> reservations = reservationRepository.findByClientEmail(email);
+		
+		List<Reservation> reservations;
+		if(email.endsWith("chatpoc.com")) {
+			reservations = reservationRepository.findAll();
+		
+		}else {
+			reservations = reservationRepository.findByClientEmail(email);
+		}
 		
 		return reservations.stream()
 				.map(ReservationDTO::fromEntity)
