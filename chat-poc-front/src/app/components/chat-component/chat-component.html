@@ -14,7 +14,7 @@
               style="cursor: pointer;"
               class="list-group-item list-group-item-action p-3">
               <div class="d-flex justify-content-between">
-                <h6 class="mb-1">{{ res.voiture?.nom || 'Véhicule' }}</h6>
+                <h6 class="mb-1">{{ res.voiture.nom || 'Véhicule' }}</h6>
               </div>
               <p class="mb-1 small text-muted">Du {{ res.dateDebut | date:'dd/MM/yyyy' }} au {{ res.dateFin | date:'dd/MM/yyyy' }}</p>
             </a>

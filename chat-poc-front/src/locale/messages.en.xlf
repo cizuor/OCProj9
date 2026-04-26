@@ -4,26 +4,34 @@
     <body>
       <trans-unit id="chat.myloc" datatype="html">
         <source>Mes Locations</source>
-        <target>My Locations</target>
+        <target>My Rentals</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/chat-component/chat-component.html</context>
           <context context-type="linenumber">8,10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="chat.title" datatype="html">
-        <source>Support Client - Location #8475</source>
-        <target>Customer Support - Location #8475</target>
+      <trans-unit id="chat.noloc" datatype="html">
+        <source>No current rentals.</source>
+        <target>No current rentals.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/chat-component/chat-component.html</context>
-          <context context-type="linenumber">31,34</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chat.title" datatype="html">
+        <source>Support Client - Location <x id="INTERPOLATION" equiv-text="{{ selectedReservation()?.voiture?.nom }}"/></source>
+        <target>Client Support - Rental <x id="INTERPOLATION" equiv-text="{{ selectedReservation()?.voiture?.nom }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/chat-component/chat-component.html</context>
+          <context context-type="linenumber">34,35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chat.placeholder" datatype="html">
         <source>Tapez votre message...</source>
-        <target>Type your message...</target>
+        <target>Enter your message...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/chat-component/chat-component.html</context>
-          <context context-type="linenumber">56,57</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chat.sendButton" datatype="html">
@@ -31,7 +39,15 @@
         <target>Send</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/chat-component/chat-component.html</context>
-          <context context-type="linenumber">57,59</context>
+          <context context-type="linenumber">66,68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chat.noselection" datatype="html">
+        <source>Sélectionnez une location pour discuter avec le support.</source>
+        <target>Select a rental to chat with support.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/chat-component/chat-component.html</context>
+          <context context-type="linenumber">71,74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.welcome" datatype="html">
@@ -44,7 +60,7 @@
       </trans-unit>
       <trans-unit id="login.subtitle" datatype="html">
         <source>Connectez-vous pour accéder au support Your Car Your Way</source>
-        <target>Log in to access Your Car Your Way support</target>
+        <target>Sign in to access the Your Car Your Way support</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/login-component/login-component.html</context>
           <context context-type="linenumber">6,8</context>
@@ -68,10 +84,74 @@
       </trans-unit>
       <trans-unit id="login.submit" datatype="html">
         <source> Se connecter </source>
-        <target> Log in </target>
+        <target>Sign in</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/login-component/login-component.html</context>
           <context context-type="linenumber">19,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login.goToRegister" datatype="html">
+        <source>Pas encore de compte ? Inscrivez-vous</source>
+        <target>Don't have an account? Sign up</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/login-component/login-component.html</context>
+          <context context-type="linenumber">27,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register.title" datatype="html">
+        <source>Créer un compte</source>
+        <target>Create an account</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register-component/register-component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register.subtitle" datatype="html">
+        <source>Rejoignez Your Car Your Way</source>
+        <target>Join Your Car Your Way</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register-component/register-component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register.emailLabel" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register-component/register-component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register.pseudoLabel" datatype="html">
+        <source>Pseudo</source>
+        <target>Username</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register-component/register-component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register.passwordLabel" datatype="html">
+        <source>Mot de passe</source>
+        <target>Password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register-component/register-component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register.submit" datatype="html">
+        <source> S&apos;inscrire </source>
+        <target>Sign up</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register-component/register-component.html</context>
+          <context context-type="linenumber">24,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register.backToLogin" datatype="html">
+        <source>Déjà un compte ? Connectez-vous</source>
+        <target>Already have an account? Sign in</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register-component/register-component.html</context>
+          <context context-type="linenumber">31,35</context>
         </context-group>
       </trans-unit>
     </body>

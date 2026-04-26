@@ -59,7 +59,7 @@ public class DataInitializer implements CommandLineRunner {
             System.out.println(">> Inventaire initial de voitures créé !");
         }
         
-        if (!userRepository.existsByEmail("support@ycyw.com")) {
+        if (!userRepository.existsByEmail("support@chatpoc.com")) {
             User support = new User();
             support.setEmail("support@chatpoc.com");
             support.setPseudo("support");
