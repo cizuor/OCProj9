@@ -71,6 +71,9 @@ Pour valider le PoC, suivez ce scénario de démonstration :
 
         Magie du PoC : L'application détecte votre domaine et vous donne accès à toutes les conversations de la base de données.
 
+        Par défaut un utilisateur support (email: support@chatpoc.com    pseudo: support    mdp: Support123! ) est créé via le DataInitializer
+
+
     Le Temps Réel : Cliquez sur la même réservation sur les deux navigateurs. Écrivez un message. Il apparaîtra instantanément chez l'autre personne.
 
 ### 3. Guide d'Architecture pour les Développeurs (À lire absolument)
