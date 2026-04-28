@@ -3,6 +3,7 @@ package com.yourcaryourway.chatpoc;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,9 @@ import com.yourcaryourway.chatpoc.repository.VoitureRepository;
 public class DataInitializer implements CommandLineRunner {
 
     private final PasswordEncoder passwordEncoder;
-
+    
+    @Value("${application.setup.support-password}")
+    private String supportPassword;
 	
 	private final VoitureRepository voitureRepository;
 	private final UserRepository userRepository;
@@ -63,7 +66,7 @@ public class DataInitializer implements CommandLineRunner {
             User support = new User();
             support.setEmail("support@chatpoc.com");
             support.setPseudo("support");
-            support.setPassword(passwordEncoder.encode("Support123!"));
+            support.setPassword(passwordEncoder.encode(supportPassword));
             support.setLanguage(Language.FR);
             support.setCurrency(Currency.EUR);
             userRepository.save(support);
