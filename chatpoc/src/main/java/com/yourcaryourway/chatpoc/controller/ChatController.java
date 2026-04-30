@@ -42,11 +42,12 @@ public class ChatController {
 	            chatMessage.getContenu()
 	    );
 	
-
+	    // on envoie le message a toute les personne aboné a /topic/chat/id
 	    messagingTemplate.convertAndSend(
 	            "/topic/chat/" + chatMessage.getConversationId(), 
 	            savedMessage
 	    );
+	    // faille sécuriter car on peu s'aboner sans problème a une discution qui n'est pas la notre.
 	}
 	 
 	 

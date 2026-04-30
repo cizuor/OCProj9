@@ -39,14 +39,15 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry config) {
-	
+		// crée la zone de diffusion, tout les message commencant par /topic sont renvoyer au client angular
 	    config.enableSimpleBroker("/topic");
-	
+	    // defini le prefixe pour les message client -> serveur (avec le controleur a /send-message il faut donc mettre /app/send-message)
 	    config.setApplicationDestinationPrefixes("/app");
 	}
 	
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
+		// URL de connection initiale
 	    registry.addEndpoint("/ws-chat")
 	        .setAllowedOrigins("http://localhost:4200");
 	}
@@ -59,10 +60,12 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	    registration.interceptors(new ChannelInterceptor() {
 	        @Override
 	        public Message<?> preSend(Message<?> message, MessageChannel channel) {
+	        	// lis les information cachée de STOMP
 	            StompHeaderAccessor accessor = MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
 	
 	            // Si c'est une tentative de connexion, on vérifie le badge (Token)
 	            if (StompCommand.CONNECT.equals(accessor.getCommand())) {
+	            	// recup le jeton JWT
 	                String authHeader = accessor.getFirstNativeHeader("Authorization");
 	                
 	                if (authHeader != null && authHeader.startsWith("Bearer ")) {
@@ -83,6 +86,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	                    }
 	                }
 	            }
+	            
+	            // il faut ajouter if (StompCommand.SUBSCRIBE.equals(command)) pour faire un test de sécuriter quand on se connecte au channel pour éviter de lire les message des autre 
 	            return message;
 	        }
 	    });
